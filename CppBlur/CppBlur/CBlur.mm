@@ -43,7 +43,9 @@ template <class T> inline T clamp(T val, T minVal, T maxVal)  {
     [indexes enumerateIndexesWithOptions:NSEnumerationConcurrent
                               usingBlock:[&](NSUInteger idx, BOOL* _Nonnull stop){
         double sum = 0.0;
-        for (int i = static_cast<int>(idx) - static_cast<int>(self.radius); i <= idx + self.radius; i++) {
+        int upBound = static_cast<int>(idx + self.radius);
+        int bottomBound = static_cast<int>(idx) - static_cast<int>(self.radius);
+        for (int i = bottomBound; i <= upBound; i++) {
             int index = clamp(i, minIndex, maxIndex);
             sum += self->_source.at(index);
         }
