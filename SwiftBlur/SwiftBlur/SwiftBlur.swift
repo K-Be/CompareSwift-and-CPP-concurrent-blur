@@ -23,6 +23,7 @@ import Foundation
         let from = -Int(self.blurRadius)
         let to = Int(self.blurRadius)
         let lastIndex = self.source.count - 1
+        let lock = NSLock()
         indexSet.enumerate(options: .concurrent) { (index:Int, _) in
             let sum = ((from + index)...(to + index)).reduce(0.0) { (partial:Double, nonClamped:Int) -> Double in
                 let index = self.clamp(nonClamped, min: 0, max: lastIndex)
@@ -30,7 +31,9 @@ import Foundation
                 return result
             }
             let avg = sum / Double(2 * self.blurRadius + 1);
+            lock.lock()
             result[index] = avg
+            lock.unlock()
         }
 
         return result
