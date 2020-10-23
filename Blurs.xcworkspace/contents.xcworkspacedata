@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:CppBlur/CppBlur.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftBlur/SwiftBlur.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DifferentBlurs.xcodeproj">
+   </FileRef>
+</Workspace>
